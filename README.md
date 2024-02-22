@@ -4,7 +4,7 @@ This project is a game review platform built with React.js. Users can review gam
 
 ## Preview
 
-You can preview the deployed project on [Netlify](https://bestbrowsergamesapp.netlify.app/login). <br/>
+You can preview the deployed project on [Netlify](https://bestbrowsergamesapp.netlify.app/). <br/>
 
 ### Deploy status
 

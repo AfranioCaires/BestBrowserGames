@@ -90,7 +90,13 @@ export default function Login() {
             podemos cadastrar contas. <br /> <br />
             Deixamos logins salvos para você testar o site. Veja o login de{" "}
             <HoverCard>
-              <HoverCardTrigger asChild>
+              <HoverCardTrigger
+                onClick={() => {
+                  setEmail("admin@admin.com");
+                  setPassword("admin");
+                }}
+                asChild
+              >
                 <p className="font-medium inline-flex text-primary underline-offset-4 hover:underline">
                   Administrador
                 </p>
@@ -138,7 +144,13 @@ export default function Login() {
             </HoverCard>
             . Veja o login de{" "}
             <HoverCard>
-              <HoverCardTrigger asChild>
+              <HoverCardTrigger
+                onClick={() => {
+                  setEmail("fulano@fulano.com");
+                  setPassword("123456");
+                }}
+                asChild
+              >
                 <p className="font-medium inline-flex text-primary underline-offset-4 hover:underline">
                   Usuário
                 </p>
