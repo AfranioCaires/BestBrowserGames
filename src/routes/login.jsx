@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Gamepad2 } from "lucide-react";
+import {
+  Gamepad2,
+  ShieldAlert,
+  Mail,
+  Lock,
+  ChevronRight,
+  Copy,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +14,14 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { isEmailValid } from "@/lib/utils";
 import { useLogin } from "@/contexts/authProvider";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 export default function Login() {
   const { login } = useLogin();
@@ -64,9 +79,112 @@ export default function Login() {
     <div className="flex min-h-[80svh] flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="md:mx-auto md:w-full md:max-w-md">
         <Gamepad2 className="h-10 w-10 mx-auto" alt="Best Browser Games" />
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight font-heading">
+        <h2 className="mt-10 mb-10 text-center text-2xl font-bold leading-9 tracking-tight font-heading">
           Entre na sua conta
         </h2>
+        <Alert>
+          <ShieldAlert className="h-4 w-4" />
+          <AlertTitle>Ei, vistante!</AlertTitle>
+          <AlertDescription>
+            Este site não está conectado com um servidor. Isso signifca que não
+            podemos cadastrar contas. <br /> <br />
+            Deixamos logins salvos para você testar o site. Veja o login de{" "}
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <p className="font-medium inline-flex text-primary underline-offset-4 hover:underline">
+                  Administrador
+                </p>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80">
+                <div className="flex justify-between space-x-4">
+                  <Avatar>
+                    <AvatarImage src="https://ui.shadcn.com/avatars/01.png" />
+                    <AvatarFallback>AD</AvatarFallback>
+                  </Avatar>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-semibold">Admin</h4>
+                    <p className="text-sm">
+                      Administrador da Best Browser Games.
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center pt-2">
+                          <Mail className="mr-2 h-4 w-4 opacity-70" />{" "}
+                          <span className="text-xs text-muted-foreground">
+                            admin@admin.com
+                          </span>
+                        </div>
+                        <div className="flex items-center pt-2">
+                          <Lock className="mr-2 h-4 w-4 opacity-70" />{" "}
+                          <span className="text-xs text-muted-foreground">
+                            admin
+                          </span>
+                        </div>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setEmail("admin@admin.com");
+                          setPassword("admin");
+                        }}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            . Veja o login de{" "}
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <p className="font-medium inline-flex text-primary underline-offset-4 hover:underline">
+                  Usuário
+                </p>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-70">
+                <div className="flex justify-between space-x-4">
+                  <Avatar>
+                    <AvatarImage src="https://ui.shadcn.com/avatars/02.png" />
+                    <AvatarFallback>US</AvatarFallback>
+                  </Avatar>
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-semibold">Fulano</h4>
+                    <p className="text-sm">Usuário da Best Browser Games.</p>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center pt-2">
+                          <Mail className="mr-2 h-4 w-4 opacity-70" />{" "}
+                          <span className="text-xs text-muted-foreground">
+                            fulano@fulano.com
+                          </span>
+                        </div>
+                        <div className="flex items-center pt-2">
+                          <Lock className="mr-2 h-4 w-4 opacity-70" />{" "}
+                          <span className="text-xs text-muted-foreground">
+                            123456
+                          </span>
+                        </div>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setEmail("fulano@fulano.com");
+                          setPassword("123456");
+                        }}
+                      >
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+            .
+          </AlertDescription>
+        </Alert>
       </div>
 
       <div className="mt-10 md:mx-auto md:w-full md:max-w-md">

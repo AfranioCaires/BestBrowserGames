@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLogin } from "@/contexts/authProvider";
 import { Button } from "@/components/ui/button";
-import { RotateCcw } from "lucide-react";
+import { RotateCcw, ChevronLeft } from "lucide-react";
 import GameCard from "@/components/gameCard";
 import { Input } from "@/components/ui/input";
 import {
@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { isLoggedIn } = useLogin();
@@ -110,6 +111,14 @@ export default function Dashboard() {
               <h1 className="mt-3 text-2xl font-semibold font-heading md:text-3xl">
                 Erro de autenficação
               </h1>
+              <p className="mt-4 text-muted-foreground">
+                Você precisa estar logado para acessar essa página.
+              </p>
+              <Link to="/login">
+                <Button className="mt-4">
+                  <ChevronLeft className="mr-2 h-4 w-4" /> Fazer login
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
